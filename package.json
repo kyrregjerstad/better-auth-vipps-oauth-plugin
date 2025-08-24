@@ -29,12 +29,12 @@
 	"license": "MIT",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/kyrregjerstad/vipps-oauth-plugin.git"
+		"url": "git+https://github.com/kyrregjerstad/better-auth-vipps-oauth-plugin.git"
 	},
 	"bugs": {
-		"url": "https://github.com/kyrregjerstad/vipps-oauth-plugin/issues"
+		"url": "https://github.com/kyrregjerstad/better-auth-vipps-oauth-plugin/issues"
 	},
-	"homepage": "https://github.com/kyrregjerstad/vipps-oauth-plugin#readme",
+	"homepage": "https://github.com/kyrregjerstad/better-auth-vipps-oauth-plugin#readme",
 	"packageManager": "pnpm@10.15.0",
 	"devDependencies": {
 		"@biomejs/biome": "2.2.2",
