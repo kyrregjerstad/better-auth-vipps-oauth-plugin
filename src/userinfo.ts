@@ -5,7 +5,7 @@ import {
 	VippsAPIError,
 	type VippsUserInfo,
 	vippsUserinfoSchema,
-} from './types';
+} from './types.js';
 
 /**
  * Fetches user information from Vipps using the access token

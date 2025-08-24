@@ -1,9 +1,9 @@
 import { beforeEach, describe, expect, it } from 'vitest';
-import { server } from '../../vitest.setup';
-import { getBaseUrl } from '../config';
-import { VippsAPIError } from '../types';
-import { fetchVippsUserInfo } from '../userinfo';
-import * as vipps from './vipps.mocks';
+import { getBaseUrl } from '../config.js';
+import { VippsAPIError } from '../types.js';
+import { fetchVippsUserInfo } from '../userinfo.js';
+import { server } from '../vitest.setup.js';
+import * as vipps from './vipps.mocks.js';
 
 const discoveryUrlTest =
 	'https://apitest.vipps.no/access-management-1.0/access/.well-known/openid-configuration';

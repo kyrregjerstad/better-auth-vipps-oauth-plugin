@@ -1,8 +1,12 @@
 {
-	"name": "better-auth-vipps-plugin",
+	"name": "@kyrregjerstad/vipps-oauth-plugin",
 	"version": "1.0.0",
-	"description": "",
-	"main": "index.js",
+	"description": "A Better Auth plugin for Vipps OAuth",
+	"main": "dist/index.js",
+	"type": "module",
+	"files": [
+		"dist"
+	],
 	"scripts": {
 		"dev": "vitest",
 		"build": "tsc",
@@ -13,9 +17,22 @@
 		"check": "tsc --noEmit",
 		"test": "vitest run"
 	},
-	"keywords": [],
-	"author": "",
-	"license": "ISC",
+	"keywords": [
+		"better-auth",
+		"vipps",
+		"oauth",
+		"plugin"
+	],
+	"author": "Kyrre Gjerstad <hi@kyrre.dev> (https://kyrre.dev)",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/kyrregjerstad/better-auth-vipps-oauth-plugin.git"
+	},
+	"bugs": {
+		"url": "https://github.com/kyrregjerstad/better-auth-vipps-oauth-plugin/issues"
+	},
+	"homepage": "https://github.com/kyrregjerstad/better-auth-vipps-oauth-plugin#readme",
 	"packageManager": "pnpm@10.15.0",
 	"devDependencies": {
 		"@biomejs/biome": "2.2.2",

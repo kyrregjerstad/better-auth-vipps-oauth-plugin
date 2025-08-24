@@ -1,4 +1,4 @@
-import { HttpResponse, http, server } from '../../vitest.setup';
+import { HttpResponse, http, server } from '../vitest.setup.js';
 
 export function mockDiscoveryUserinfoEndpoint(
 	discoveryUrl: string,

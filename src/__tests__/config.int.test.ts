@@ -1,5 +1,9 @@
 import { describe, expect, it } from 'vitest';
-import { createAuthParams, getDiscoveryUrl, validateConfig } from '../config';
+import {
+	createAuthParams,
+	getDiscoveryUrl,
+	validateConfig,
+} from '../config.js';
 
 describe('vippsOAuth config integration', () => {
 	it('validates and applies defaults', () => {

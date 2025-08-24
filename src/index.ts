@@ -4,9 +4,9 @@ import {
 	getBaseUrl,
 	getDiscoveryUrl,
 	validateConfig,
-} from './config';
-import type { VippsOAuthConfig, VippsUserInfo } from './types';
-import { fetchVippsUserInfo } from './userinfo';
+} from './config.js';
+import type { VippsOAuthConfig, VippsUserInfo } from './types.js';
+import { fetchVippsUserInfo } from './userinfo.js';
 
 /**
  * Vipps OAuth plugin for better-auth
@@ -95,6 +95,11 @@ export function vippsOAuth(
 	});
 }
 
-export type { VippsAddress, VippsOAuthConfig, VippsUserInfo } from './types';
-
-export { VippsAPIError, VippsConfigError, VippsOAuthError } from './types';
+export type {
+	VippsAddress,
+	VippsAPIError,
+	VippsConfigError,
+	VippsOAuthConfig,
+	VippsOAuthError,
+	VippsUserInfo,
+} from './types.js';

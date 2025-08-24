@@ -4,7 +4,7 @@ import {
 	type VippsEnvironment,
 	type VippsOAuthConfig,
 	type VippsOAuthConfigInternal,
-} from './types';
+} from './types.js';
 
 /**
  * Default configuration values

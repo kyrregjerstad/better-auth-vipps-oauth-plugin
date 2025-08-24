@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { vippsOAuth } from '..';
-import { VippsConfigError } from '../types';
+import { vippsOAuth } from '../index.js';
+import { VippsConfigError } from '../types.js';
 
 describe('vippsOAuth plugin smoke', () => {
 	it('constructs plugin config with valid settings', () => {
