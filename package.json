@@ -1,6 +1,6 @@
 {
 	"name": "@kyrregjerstad/vipps-oauth-plugin",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "A Better-Auth plugin for Vipps OAuth",
 	"main": "dist/index.js",
 	"type": "module",
@@ -15,7 +15,9 @@
 		"lint": "biome lint --write",
 		"check-format": "pnpm exec biome check",
 		"check": "tsc --noEmit",
-		"test": "vitest run"
+		"test": "vitest run",
+		"local-release": "changeset version && changeset publish",
+		"prepublishOnly": "pnpm run ci"
 	},
 	"keywords": [
 		"better-auth",
