@@ -1,9 +1,9 @@
 import { z } from 'zod';
 import {
-	GetUserInfoArgs,
-	VippsUserInfo,
-	VippsAPIError,
 	discoverySchema,
+	type GetUserInfoArgs,
+	VippsAPIError,
+	type VippsUserInfo,
 	vippsUserinfoSchema,
 } from './types';
 
@@ -49,7 +49,9 @@ export async function fetchVippsUserInfo(
 			throw error;
 		}
 		throw new VippsAPIError(
-			`Failed to fetch Vipps user info: ${error instanceof Error ? error.message : 'Unknown error'}`,
+			`Failed to fetch Vipps user info: ${
+				error instanceof Error ? error.message : 'Unknown error'
+			}`,
 			undefined,
 			error,
 		);
@@ -69,7 +71,7 @@ async function fetchDiscoveryDocument(
 			const cached = (await cache.get(cacheKey)) as
 				| { userinfo_endpoint: string }
 				| undefined;
-			if (cached && cached.userinfo_endpoint) {
+			if (cached?.userinfo_endpoint) {
 				return cached;
 			}
 		}
@@ -160,7 +162,9 @@ async function fetchUserInfoFromEndpoint(
 		}
 
 		throw new VippsAPIError(
-			`Failed to fetch user info: ${error instanceof Error ? error.message : 'Unknown error'}`,
+			`Failed to fetch user info: ${
+				error instanceof Error ? error.message : 'Unknown error'
+			}`,
 			undefined,
 			error,
 		);

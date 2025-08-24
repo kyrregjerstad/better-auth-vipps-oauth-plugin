@@ -10,6 +10,7 @@
 		"format": "biome format --write",
 		"lint": "biome lint --write",
 		"check-format": "pnpm exec biome check",
+		"check": "tsc --noEmit",
 		"test": "vitest run"
 	},
 	"keywords": [],

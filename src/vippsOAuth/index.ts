@@ -1,6 +1,11 @@
 import { genericOAuth } from 'better-auth/plugins';
-import { createAuthParams, getDiscoveryUrl, validateConfig, getBaseUrl } from './config';
-import { VippsOAuthConfig, VippsUserInfo } from './types';
+import {
+	createAuthParams,
+	getBaseUrl,
+	getDiscoveryUrl,
+	validateConfig,
+} from './config';
+import type { VippsOAuthConfig, VippsUserInfo } from './types';
 import { fetchVippsUserInfo } from './userinfo';
 
 /**
@@ -26,65 +31,68 @@ import { fetchVippsUserInfo } from './userinfo';
  * });
  * ```
  */
-export function vippsOAuth(options: VippsOAuthConfig): ReturnType<typeof genericOAuth> {
-  const config = validateConfig(options);
-  const discoveryUrl = getDiscoveryUrl(config.environment);
-  const authParams = createAuthParams(config);
+export function vippsOAuth(
+	options: VippsOAuthConfig,
+): ReturnType<typeof genericOAuth> {
+	const config = validateConfig(options);
+	const discoveryUrl = getDiscoveryUrl(config.environment);
+	const authParams = createAuthParams(config);
 
-  return genericOAuth({
-    config: [
-      {
-        providerId: 'vipps',
-        clientId: config.clientId,
-        clientSecret: config.clientSecret,
-        discoveryUrl,
-        scopes: config.scopes,
-        redirectURI: config.redirectUri,
-        pkce: true,
-        responseType: 'code',
-        responseMode: config.responseMode,
-        prompt: config.prompt,
-        authorizationUrlParams: authParams,
-        authentication: config.authentication,
-        overrideUserInfo: config.overrideUserInfo,
+	return genericOAuth({
+		config: [
+			{
+				providerId: 'vipps',
+				clientId: config.clientId,
+				clientSecret: config.clientSecret,
+				discoveryUrl,
+				scopes: config.scopes,
+				redirectURI: config.redirectUri,
+				pkce: true,
+				responseType: 'code',
+				responseMode: config.responseMode,
+				prompt: config.prompt,
+				authorizationUrlParams: authParams,
+				authentication: config.authentication,
+				overrideUserInfo: config.overrideUserInfo,
 
-        getUserInfo: async (tokens) => {
-          if (!tokens.accessToken) {
-            throw new Error('No access token provided');
-          }
+				getUserInfo: async (tokens) => {
+					if (!tokens.accessToken) {
+						throw new Error('No access token provided');
+					}
 
-          try {
-            const userInfo = await fetchVippsUserInfo({
-              accessToken: tokens.accessToken,
-              discoveryUrl,
-              baseUrl: getBaseUrl(config.environment),
-              userinfoHeaders: config.userinfoHeaders,
-              discoveryCache: config.discoveryCache,
-            });
+					try {
+						const userInfo = await fetchVippsUserInfo({
+							accessToken: tokens.accessToken,
+							discoveryUrl,
+							baseUrl: getBaseUrl(config.environment),
+							userinfoHeaders: config.userinfoHeaders,
+							discoveryCache: config.discoveryCache,
+						});
 
-            if (!userInfo) {
-              return null;
-            }
+						if (!userInfo) {
+							return null;
+						}
 
-            return {
-              id: userInfo.sub,
-              emailVerified: userInfo.email_verified,
-              ...userInfo,
-              createdAt: new Date(),
-              updatedAt: new Date(),
-            };
-          } catch (error) {
-            console.error('[vippsOAuth] Failed to get user info:', error);
-            return null;
-          }
-        },
+						return {
+							id: userInfo.sub,
+							emailVerified: userInfo.email_verified,
+							...userInfo,
+							createdAt: new Date(),
+							updatedAt: new Date(),
+						};
+					} catch (error) {
+						console.error('[vippsOAuth] Failed to get user info:', error);
+						return null;
+					}
+				},
 
-        mapProfileToUser: options.mapProfileToUser
-          ? (profile) => options.mapProfileToUser!(profile as VippsUserInfo)
-          : undefined,
-      },
-    ],
-  });
+				mapProfileToUser: options.mapProfileToUser
+					? // biome-ignore lint/style/noNonNullAssertion: we know that mapProfileToUser is defined
+						(profile) => options.mapProfileToUser!(profile as VippsUserInfo)
+					: undefined,
+			},
+		],
+	});
 }
 
 export type { VippsAddress, VippsOAuthConfig, VippsUserInfo } from './types';

@@ -1,9 +1,9 @@
 import { z } from 'zod';
 import {
-	VippsOAuthConfig,
-	VippsOAuthConfigInternal,
 	VippsConfigError,
-	VippsEnvironment,
+	type VippsEnvironment,
+	type VippsOAuthConfig,
+	type VippsOAuthConfigInternal,
 } from './types';
 
 /**

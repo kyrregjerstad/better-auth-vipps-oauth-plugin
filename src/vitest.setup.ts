@@ -4,15 +4,15 @@ import { afterAll, afterEach, beforeAll } from 'vitest';
 export const server = setupServer();
 
 beforeAll(() => {
-  server.listen({ onUnhandledRequest: 'error' });
+	server.listen({ onUnhandledRequest: 'error' });
 });
 
 afterEach(() => {
-  server.resetHandlers();
+	server.resetHandlers();
 });
 
 afterAll(() => {
-  server.close();
+	server.close();
 });
 
-export { http, HttpResponse } from 'msw';
+export { HttpResponse, http } from 'msw';

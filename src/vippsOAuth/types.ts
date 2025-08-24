@@ -34,7 +34,7 @@ export interface VippsOAuthConfig {
 	/** Standard OIDC prompt value */
 	prompt?: 'none' | 'login' | 'consent' | 'select_account';
 	/** Standard OIDC response mode */
-	responseMode?: 'query' | 'form_post';
+	responseMode?: 'query' | 'form_post' | 'fragment';
 	/** Extra authorization URL params (advanced) */
 	authorizationUrlParams?: Record<string, string>;
 	/** Token endpoint auth method passthrough */
