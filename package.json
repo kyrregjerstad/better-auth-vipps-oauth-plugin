@@ -1,0 +1,32 @@
+{
+	"name": "better-auth-vipps-plugin",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"dev": "vitest",
+		"build": "tsc",
+		"ci": "pnpm run build && pnpm exec biome check && pnpm run test",
+		"format": "biome format --write",
+		"lint": "biome lint --write",
+		"check-format": "pnpm exec biome check",
+		"test": "vitest run"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"packageManager": "pnpm@10.15.0",
+	"devDependencies": {
+		"@biomejs/biome": "2.2.2",
+		"@changesets/cli": "^2.29.6",
+		"msw": "^2.10.5",
+		"typescript": "^5.9.2",
+		"vitest": "^3.2.4"
+	},
+	"peerDependencies": {
+		"better-auth": "^1.1.0"
+	},
+	"dependencies": {
+		"zod": "^4.1.1"
+	}
+}
